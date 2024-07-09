@@ -42,15 +42,30 @@ public class GamerService {
     }
 
 
+    /**
+     * Удаляет игрока с активной игры
+     * @param gamerId id игрока
+     */
     public void kickGamer(Integer gamerId){
         Gamer gamerById = findGamerById(gamerId);
         game.getGamers().remove(gamerById);
     }
 
+    /**
+     * Отключает микрофон у игрока
+     * @param gamerId id игрока
+     */
     public void muteGamer(Integer gamerId){
         Gamer gamerById = findGamerById(gamerId);
         gamerById.setMute(true);
     }
+
+    /**
+     * Меняет Classification игрока по id. Если данный classification был у другого игрока,
+     * то второму игроку присваивается classification первого игрока.
+     * @param gamerId id игрока
+     * @param classificationName класс игрока
+     */
     public void toChangeClassGamer(Integer gamerId, String classificationName){
         ClassificationService classificationService = new ClassificationService();
         Classification classificationByName = classificationService.findClassificationByName(classificationName);
