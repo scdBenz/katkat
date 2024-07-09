@@ -42,6 +42,10 @@ public class GamerService {
     }
 
 
+    /**
+     * Удаляет игрока с активной игры
+     * @param gamerId id игрока
+     */
     public void kickGamer(Integer gamerId){
         Gamer gamerById = findGamerById(gamerId);
         game.getGamers().remove(gamerById);
